@@ -2,7 +2,7 @@
 
 A restaurant website for a modern grill and desi kitchen, built with Next.js, TypeScript and Tailwind CSS.
 
-**Live demo:** _coming soon_
+**Live demo:** [ember-spice-nu.vercel.app](https://ember-spice-nu.vercel.app/)
 
 ## Features
 
