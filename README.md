@@ -1,55 +1,75 @@
-# Ember & Spice — Restaurant Demo Website
+# Ember & Spice
 
-Next.js 15 + TypeScript + Tailwind CSS 4. Fiverr portfolio ke liye demo restaurant website.
+A restaurant website for a modern grill and desi kitchen, built with Next.js, TypeScript and Tailwind CSS.
 
-## Sections
-Navbar (mobile menu), Hero, About, Menu (category tabs), Gallery, Reviews, Table booking form, Contact + opening hours, Footer, floating WhatsApp button.
+**Live demo:** _coming soon_
 
-## Apne computer par chalana
+## Features
 
-1. Node.js 20 ya naya install hona chahiye (`node -v` se check karein)
-2. Is folder mein terminal kholein (VS Code: Terminal → New Terminal)
-3. Packages install karein:
-   ```
-   npm install
-   ```
-4. Site chalayein:
-   ```
-   npm run dev
-   ```
-5. Browser mein kholein: http://localhost:3000
+- Responsive layout for mobile, tablet and desktop
+- Menu with category tabs (Starters, Grill, Curries, Rice & Bread, Desserts)
+- Table reservation form
+  - Only future dates can be selected
+  - Same-day bookings require a minimum lead time (5 hours by default)
+  - Name and phone fields accept letters and digits only
+  - Requests are delivered by email through Web3Forms, with optional WhatsApp hand-off
+- Photo gallery, guest reviews, opening hours and contact details
+- Floating WhatsApp chat button
+- Static export: deploys to Vercel, Netlify or any standard web host
 
-## Content badalna (naye client ke liye)
+## Tech stack
 
-Sab content ek hi file mein hai: **`data/site.ts`**
-- Naam, phone, WhatsApp number, address, hours
-- Menu items aur prices
-- Reviews
-- Photos ke links
+| | |
+| --- | --- |
+| Framework | Next.js 15 (App Router, static export) |
+| Language | TypeScript |
+| Styling | Tailwind CSS 4 |
+| Forms | Web3Forms |
+| Hosting | Vercel |
 
-Photos: abhi Unsplash ki free photos hain. Client ki photos `public/images/` mein daalein aur `data/site.ts` mein link `"/images/photo.jpg"` kar dein.
+## Getting started
 
-Colors: `app/globals.css` mein `@theme` ke andar `--color-ember` aur `--color-saffron` badlein.
+Requires Node.js 20 or later.
 
-## Vercel par free deploy (live link)
+```bash
+npm install
+npm run dev
+```
 
-1. GitHub par naya repository banayein aur yeh folder push karein:
-   ```
-   git init
-   git add .
-   git commit -m "Restaurant demo"
-   git branch -M main
-   git remote add origin https://github.com/YOUR-USERNAME/ember-spice.git
-   git push -u origin main
-   ```
-2. vercel.com par GitHub se sign in karein
-3. "Add New → Project" → apna repository select → "Deploy"
-4. 1–2 minute mein live link mil jayega (jaise `ember-spice.vercel.app`)
-5. Yeh link Fiverr portfolio aur gig mein lagayein
+Then open [http://localhost:3000](http://localhost:3000).
 
-## Static build (kisi bhi hosting / cPanel ke liye)
+## Project structure
 
 ```
-npm run build
+app/
+  layout.tsx        Page metadata and root layout
+  page.tsx          Home page, assembles all sections
+  globals.css       Theme colours, fonts and animations
+components/         One file per section (Hero, Menu, Reservation, ...)
+data/
+  site.ts           All content and settings
 ```
-Poori site `out/` folder mein ban jati hai. Is folder ki files cPanel ke `public_html` mein upload kar dein.
+
+## Configuration
+
+All restaurant content lives in `data/site.ts`, so the site can be adapted for a new business without touching the components:
+
+- `site`: name, phone, WhatsApp number, address, opening hours, social links
+- `menu`: categories, dishes, descriptions and prices
+- `reviews`: guest testimonials
+- `images`: hero, about and gallery photos
+- `booking`: delivery method, Web3Forms access key, minimum lead time, booking window and time slots
+
+Brand colours are defined in the `@theme` block of `app/globals.css`.
+
+## Deployment
+
+The project is configured for static export (`output: "export"` in `next.config.ts`).
+
+**Vercel:** import the repository at [vercel.com/new](https://vercel.com/new) and deploy with the default settings.
+
+**Any other host:** run `npm run build` and upload the contents of the generated `out/` folder.
+
+## Credits
+
+Photography from [Unsplash](https://unsplash.com). Fonts: Fraunces and Inter from Google Fonts.
